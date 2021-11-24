@@ -1,5 +1,6 @@
 package com.qa.opencart.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -47,6 +48,28 @@ public class ElementUtila {
 	public String getLoginPageTitle() {
 		
 		return driver.getTitle();
+	}
+	
+	public List<String> getAlltext(By locator) {
+		
+		List<String> Alltext=new ArrayList<>();
+	
+		List<WebElement> ele= getElements(locator);
+		
+		for (WebElement element : ele) {
+		 Alltext.add(element.getText());
+		}
+		return Alltext;
+	}
+	
+	public String getPageTitle() {
+		
+		return driver.getTitle();
+	}
+
+	public String getPageUrl() {
+
+		return driver.getCurrentUrl();
 	}
 
 }

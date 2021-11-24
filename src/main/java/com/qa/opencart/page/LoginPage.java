@@ -20,6 +20,7 @@ public class LoginPage {
 	private WebDriver driver;
 
 	private ElementUtila elementutils;
+	private AccountPage accountpage;
 
 
 	public LoginPage(WebDriver driver) {
@@ -34,13 +35,6 @@ public class LoginPage {
 
 	}
 
-	public void loginopencart(String uname, String pwd) {
-		elementutils.doSendKey(username, uname);
-		elementutils.doSendKey(password, pwd);
-		elementutils.clickElement(login);
-
-	}
-
 	public boolean loginLinkExist() {
 		
 		return elementutils.isDisplayed(loginlink);
@@ -51,5 +45,12 @@ public class LoginPage {
 		
 		return elementutils.isDisplayed(forgottenlink);
 
+	}
+	
+	public AccountPage loginopencart(String uname, String pwd) {
+		elementutils.doSendKey(username, uname);
+		elementutils.doSendKey(password, pwd);
+		elementutils.clickElement(login);
+		return new AccountPage(driver);
 	}
 }

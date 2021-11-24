@@ -7,14 +7,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import com.qa.opencart.Factory.DriverFactory;
+import com.qa.opencart.page.AccountPage;
 import com.qa.opencart.page.LoginPage;
 
 public class basetest {
 	
-	public DriverFactory driverFactory;
-	public WebDriver driver;
+	private DriverFactory driverFactory;
+	private WebDriver driver;
 	public LoginPage loginPage;
 	public Properties prop;
+	public AccountPage accountPage;
+	
 
 	@BeforeTest
 	public void setUp() {
@@ -22,7 +25,8 @@ public class basetest {
 		driver = driverFactory.init_driver();
 
 		prop = driverFactory.init_prop();
-		loginPage = new LoginPage(driver);
+		loginPage = new LoginPage(this.driver);
+		accountPage=new AccountPage(this.driver);
 
 	}
 
